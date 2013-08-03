@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory;
+Actions=matchsubs;
+
+[Desktop Action matchsubs]
+Name=Match subtitles
+Icon=text-x-script
+Exec=/bin/sh -c 'cd "%F"; matchsubtitles'
