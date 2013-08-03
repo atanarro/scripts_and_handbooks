@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Wrapper for matchsubtitles script to create the undo file automagically on /tmp and run by default
+#
+# Copyright (C) 2013 Alvaro Tanarro <tanarro AT gmail>
+# License: MIT
+
+# Add the full path if is not in $PATH
+SCRIPTNAME=matchsubtitles.orig
+UNDOFILE=/tmp/`date +%Y-%m-%d-%X`
+
+$SCRIPTNAME --undo $UNDOFILE --run
+
+

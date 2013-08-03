@@ -1,0 +1,16 @@
+#!/usr/bin/python
+#
+# Print a random anagram with the parameters as input
+#
+# Copyright (C) 2013 Alvaro Tanarro <tanarro AT gmail>
+# License: MIT
+
+import random
+import sys
+
+args = list(sys.argv)
+args.pop(0)
+
+permutation = list(' '.join(args))
+random.shuffle(permutation)
+print ''.join(permutation)
