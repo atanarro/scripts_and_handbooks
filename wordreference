@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Print wordreference.com definitions
+#
+# Copyright (C) 2013 Alvaro Tanarro <tanarro AT gmail>
+# License: MIT
+
+#configuration
+KEY=23096
+FROMLANG=en
+TOLANG=es
+
+USELESSTEXT=Is_something_important_missing
+WORD=$(echo $1|iconv --to-code=ISO-8859-1 --from-code=UTF-8)
+WORD=`echo $(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' $WORD)|perl -e 'print lc <>;'`
+WRURL="http://api.wordreference.com/"$KEY"/"$FROMLANG$TOLANG"/"$WORD
+echo -e "********************************************"
+echo -e "WordReference.com Dictionaries: \033[1m$1\033[0m"
+echo -e "********************************************"
+
+wget -qO- -U mozilla --progress=dot $WRURL|html2text -width 140 -style pretty -utf8|tail -n +20|head -n 15|grep -v $USELESSTEXT
+echo "More in "$WRURL
